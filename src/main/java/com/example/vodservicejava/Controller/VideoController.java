@@ -1,45 +1,30 @@
 package com.example.vodservicejava.Controller;
 
-import com.example.vodservicejava.Domain.Video;
-import com.example.vodservicejava.Service.VideoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 @RestController
-@RequestMapping("/api/videos")
 public class VideoController {
-    @Autowired
-    private VideoService videoService;
 
-    @GetMapping
-    public ResponseEntity<List<Video>> getAllVideos() {
-        return ResponseEntity.ok(videoService.findAll());
-    }
+    private static final String VIDEO_PATH = "C:/videos/";
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Video> getVideoById(@PathVariable Long id) {
-        return videoService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    @GetMapping("/videos/{filename}")
+    public ResponseEntity<Resource> streamVideo(@PathVariable String filename) throws FileNotFoundException {
+        File videoFile = new File(VIDEO_PATH + filename);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(videoFile));
 
-    @PostMapping
-    public ResponseEntity<Video> createVideo(@RequestBody Video video) {
-        return ResponseEntity.ok(videoService.save(video));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Video> updateVideo(@PathVariable Long id, @RequestBody Video video) {
-        video.setId(id);
-        return ResponseEntity.ok(videoService.save(video));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteVideo(@PathVariable Long id) {
-        videoService.deleteById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok()
+                .contentType(MediaType.valueOf("video/mp4"))
+                .body(resource);
     }
 }
