@@ -2,30 +2,41 @@ package com.example.vodservicejava.Service;
 
 import com.example.vodservicejava.Domain.Video;
 import com.example.vodservicejava.Repository.VideoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@Transactional
 public class VideoService {
-    @Autowired
-    private VideoRepository videoRepository;
 
-    public List<Video> findAll() {
-        return videoRepository.findAll();
+    private final VideoRepository videoRepository;
+
+    public VideoService(VideoRepository videoRepository) {
+        this.videoRepository = videoRepository;
     }
 
-    public Optional<Video> findById(Long id) {
-        return videoRepository.findById(id);
-    }
-
-    public Video save(Video video) {
+    public Video saveVideo(Video video) {
         return videoRepository.save(video);
     }
 
-    public void deleteById(Long id) {
-        videoRepository.deleteById(id);
+    public List<Video> getAllVideos() {
+        return videoRepository.findAll();
+    }
+
+    public Video getVideoById(Long id) {
+        return videoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Video not found with id " + id));
+    }
+
+    public Video updateVideo(Long id, Video videoDetails) {
+        Video video = getVideoById(id);
+        video.setTitle(videoDetails.getTitle());
+        video.setUrl(videoDetails.getUrl());
+        return videoRepository.save(video);
+    }
+
+    public void deleteVideo(Long id) {
+        Video video = getVideoById(id);
+        videoRepository.delete(video);
     }
 }
