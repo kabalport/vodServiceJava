@@ -1,21 +1,19 @@
 package com.example.vodservicejava.Domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Video {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title;
-    private String url; // 동영상 파일이 저장된 위치
-
-    // getters and setters
+    private String fileName;
+    private String filePath;
 }
