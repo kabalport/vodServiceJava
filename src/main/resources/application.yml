@@ -1,9 +1,6 @@
 server:
   port: 8080
 
-app:
-  video-dir: videos
-
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
@@ -13,22 +10,14 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   h2:
     console:
       enabled: true
       path: /h2-console
-  thymeleaf:
-    prefix: classpath:/templates/
-    check-template-location: true
-    suffix: .html
-    cache: false # default true, 개발 시에는 false로 두는 것이 좋음
-
-
-
----
-spring:
   servlet:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+upload:
+  dir: /Users/choedaeyeol/upload/
