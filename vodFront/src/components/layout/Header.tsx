@@ -21,148 +21,45 @@ const useStyles = makeStyles({
         boxShadow: 'none',
         borderBottom: 'none',
     },
+    listStyle: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        listStyle: 'none',
+    }
 });
 
-interface HeaderProps {
-    isLoggedIn: boolean;
-    loginId: string;
-}
-
-const rootPath = '';
 
 const Header = () => {
     const classes = useStyles();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [loginId, setLoginId] = useState('');
-    const location = useLocation();
-    const tabPaths = ["/refa", "/tab1"];
-    const [value, setValue] = useState(location.pathname.startsWith("/refa") ? 0 : 1);
 
-    useEffect(() => {
-        setValue(location.pathname.startsWith("/refa") ? 0 : 1);
-    }, [location]);
-
-    useEffect(() => {
-        // Check if isLoggedIn value is true in sessionStorage
-        const loggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-        setIsLoggedIn(loggedIn);
-        // Get loginId value from sessionStorage
-        const storedLoginId = sessionStorage.getItem('loginId');
-        setLoginId(storedLoginId || '');
-    }, []);
-
-    const handleLoginLogout = () => {
-        // Toggle isLoggedIn value in sessionStorage
-        sessionStorage.setItem('isLoggedIn', isLoggedIn ? 'false' : 'true');
-        setIsLoggedIn(!isLoggedIn);
-        // Remove loginId value from sessionStorage
-        sessionStorage.removeItem('loginId');
-        // Clear loginId state
-        setLoginId('');
-    };
-
-    const ToolbarContainer = styled("div")<{
-
-    }>`
-
-      background-color: #f5f5f5;
-      align-items: center;
-      z-index: 2;
-      font-size: 14px;
-      transition: 0.5s;
-
-      .portal {
-        display: flex;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-
-        > li {
-          display: flex;
-          height: 100%;
-          padding: 0 20px;
-          align-items: center;
-          background-color: rgb(0,0,0,0.7);
-          > a {
-            opacity: 0.6;
-            font-family: NotoSansCJKKR;
-            white-space: nowrap;
-            font-size: 14px;
-            font-weight: normal;
-            line-height: normal;
-            letter-spacing: -0.56px;
-            text-align: left;
-
-            &:focus-visible {
-              outline: 2px solid white;
-            }
-          }
-          &.subPortal{
-            >a{
-              opacity: 0.6;
-              font-family: NotoSansCJKKR;
-              white-space: nowrap;
-              font-size: 10px;
-              font-weight: normal;
-              line-height: normal;
-              letter-spacing: -0.56px;
-              text-align: left;
-            }
-          }
-
-          &.active {
-            background-color: white};
-
-            > a {
-              color: white};
-              opacity: 1;
-            }
-          }
-    {}
-    
-    `
 
     return (
-        <ToolbarContainer>
-
-                <ul className="portal">
-                    <li className={'active'}>
+        <>
+            <Box sx={{display: 'flex', height: '100%', width: '100%', backgroundColor: '#f5f5f5'}}>
+                <ul className={classes.listStyle}>
+                    <li>
                         <NavLink to="#" onClick={() => {
-                            const domain = process.env.REACT_APP_DOMAIN
-                            window.location.href = `${domain}`
+                            window.location.href = `http://www.aica-gj.kr/main.php`
                         }}>사용자지원포털</NavLink>
                     </li>
-                    <li className={'active'}>
+                    <li>
                         <NavLink to="#" onClick={() => {
-                            const domain = process.env.REACT_APP_DOMAIN
-                            window.location.href = `${domain}/tsp`
+                            window.location.href = `http://www.aica-gj.kr/main.php`
                         }}>실증지원포털</NavLink>
                     </li>
                     <li>
                         <NavLink to="#" onClick={() => {
-                            if (!!!authentication.getToken()) {
-                                window.location.href = `${process.env.REACT_APP_DOMAIN}/dxp`
-                            }else {
-                                window.location.href = `${process.env.REACT_APP_DXP_URL}`
-                            }
+                            window.location.href = `http://www.aica-gj.kr/main.php`
                         }}>데이터유통포털</NavLink>
                     </li>
                     <li>
                         <NavLink to="#" onClick={() => {
-                            if (!!!authentication.getToken()) {
-                                window.location.href = `${process.env.REACT_APP_DOMAIN}/saz`
-                            }else {
-                                window.location.href = `${process.env.REACT_APP_SAZ_URL}`
-                            }
+                            window.location.href = `http://www.aica-gj.kr/main.php`
                         }}>안심구역포털</NavLink>
                     </li>
                     <li>
                         <NavLink to="#" onClick={() => {
-                            if (!!!authentication.getToken()) {
-                                window.location.href = `${process.env.REACT_APP_DOMAIN}/lms`
-                            }else {
-                                window.location.href = `${process.env.REACT_APP_LMS_URL}`
-                            }
+                            window.location.href = `http://localhost:3000/refa`
                         }}>AI 융합 아카데미</NavLink>
                     </li>
                     <li>
@@ -177,14 +74,12 @@ const Header = () => {
                     </li>
                 </ul>
                 <Box sx={{display: 'flex', height: '100%', width: '100%', backgroundColor: '#f5f5f5'}}/>
-                <ul className="utility">
+                <ul className={classes.listStyle}>
                     {getToken()? (
                         <Fragment>
                             <li>
-                                {/*<NavLink to={'/tsp'} className={'userName'}>*/}
                                 <b>{getUserNm()}</b>
                                 <span>님, 안녕하세요</span>
-                                {/*</NavLink>*/}
                             </li>
                             <li>
                                 <NavLink to={'signout'}>로그아웃</NavLink>
@@ -193,28 +88,19 @@ const Header = () => {
                     ) : (
                         <Fragment>
                             <li>
-                                {/*{*/}
-                                {/*  isTspPortal? <a href={`http://125.6.37.87/signin?nextUrl=${window.btoa(window.location.href)}`}>로그인</a>*/}
-                                {/*    : <NavLink to={`${rootPath}/signin`}>로그인</NavLink>*/}
-                                {/*}*/}
-                                {/*<a href={`http://125.6.37.87/signin?nextUrl=${window.btoa(window.location.href)}`}>로그인</a>*/}
-                                <NavLink to={`${rootPath}/signin`} state={{nextUrl: window.location.href}}>로그인</NavLink>
+                                <NavLink to={`/signin`} state={{nextUrl: window.location.href}}>로그인</NavLink>
                             </li>
                             <li>
                                 <NavLink to={'/signup'} onClick={() => {
-
-                                        window.location.href = `${process.env.REACT_APP_DOMAIN}/signup`
-
+                                    window.location.href = `${process.env.REACT_APP_DOMAIN}/signup`
                                 }}>회원가입</NavLink>
                             </li>
                         </Fragment>
                     )}
                 </ul>
-
-        </ToolbarContainer>
+            </Box>
+        </>
     );
 };
-
-
 
 export default Header;
