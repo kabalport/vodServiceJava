@@ -37,6 +37,7 @@ const Home = () => {
                     {/* other contents... */}
                 </Box>
             </Box>
+
         </div>
 
 

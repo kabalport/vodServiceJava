@@ -63,11 +63,11 @@
           > li {
             > a {
               background: rgba($dim, 0.5);
-              color: #ccc;
+              color: #f5f5f5;
 
               &.active {
                 background: transparent;
-                color: $white;
+                color: #f5f5f5;
               }
             }
           }

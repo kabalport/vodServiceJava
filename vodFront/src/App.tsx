@@ -17,17 +17,24 @@ import Qaa from "./pages/QAAListPage";
 import QAAListPage from "./pages/QAAListPage";
 import QAARegisterPage from "./pages/QAARegisterPage";
 import LoginPage from "./pages/LoginPage";
+import './App.css';  // Add this line to import the CSS file
+
 const App = () => {
     return (
         <LectureProvider>
             <Router>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '100vh'
+                }}>
                 <Header />
+                <NavBar />
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<LoginPage />} />
                     <Route path="/refa/*" element={
                         <>
-                            <NavBar />
                             <Routes >
                                 <Route path="/" element={<Home />} />
                                 <Route path="/about" element={<About />} />
@@ -37,14 +44,15 @@ const App = () => {
                                 <Route path="/faq" element={<Faq />} />
                                 <Route path="/qaa" element={<QAAListPage />} />
                                 <Route path="/qaaregister" element={<QAARegisterPage />} />
-
                                 <Route path="/lectures" element={<VideoLectureList />} />
                                 <Route path="/lectures/:id" element={<VideoLectureDetail />} />
                             </Routes>
-                            <Footer />
+
                         </>
                     }/>
                 </Routes>
+                    <Footer />
+                </div>
             </Router>
         </LectureProvider>
     );
