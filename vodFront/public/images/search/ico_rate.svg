@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="0 0 22 21">
+    <defs>
+        <clipPath id="g7wwakrc5a">
+            <path data-name="사각형 341218" style="fill:#fff;stroke:#707070;opacity:.5" d="M0 0h22v21H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="마스크 그룹 7" style="clip-path:url(#g7wwakrc5a)">
+        <path data-name="다각형 11" d="M10.147 1.393a1 1 0 0 1 1.706 0l2.781 4.544a1 1 0 0 0 .618.45l5.171 1.252a1 1 0 0 1 .527 1.619l-3.45 4.068a1 1 0 0 0-.235.724l.412 5.325a1 1 0 0 1-1.38 1l-4.91-2.035a1 1 0 0 0-.766 0l-4.91 2.035a1 1 0 0 1-1.38-1l.412-5.325a1 1 0 0 0-.235-.724L1.05 9.258a1 1 0 0 1 .527-1.619l5.171-1.252a1 1 0 0 0 .618-.45z" style="fill:#10c771"/>
+    </g>
+</svg>

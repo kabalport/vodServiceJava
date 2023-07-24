@@ -29,7 +29,7 @@ const App = () => {
                     minHeight: '100vh'
                 }}>
                 <Header />
-                <NavBar />
+                {/*<NavBar />*/}
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<LoginPage />} />

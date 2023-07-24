@@ -7,6 +7,7 @@ import { useScroll } from "../useScroll";
 import { useScrollStore } from "../../store/ScrollStore";
 import { useGlobalConfigStore } from "../../store/GlobalConfigStore";
 import TopNavigationBar from "./TopNavigationBar";
+import NavBar from "./NavBar";
 
 
 
@@ -95,11 +96,7 @@ const Header = () => {
                     <LoginSection />
                 </ul>
             </ToolbarContainer>
-
-              {/*<TopNavigationBar*/}
-              {/*      isDesktop={isDesktop}*/}
-              {/*      scrollY={scrollY}*/}
-              {/*  />*/}
+              <TopNavigationBar />
 
         </HeaderStyle>
     );
