@@ -589,7 +589,7 @@ const TopNavigationBar = () => {
                             const active = activeLabel == m.label;
                             return (
                                 <li key={i}>
-                                    <Button type="button" className={active ? 'active' : ''} onClick={() => goTo(m.path)}>
+                                    <Button type="button" className={active ? '' : ''} onClick={() => goTo(m.path)}>
                                         <span style={{fontSize: 18}}>{m.label}</span>
                                     </Button>
                                     <ul>
