@@ -61,13 +61,6 @@ const menuBounce = keyframes`
   }
 `;
 
-
-
-
-
-
-
-
 const useStyles = makeStyles({
     menu: {
         display: 'flex',
@@ -75,17 +68,19 @@ const useStyles = makeStyles({
         width: '100%',
         justifyContent: 'center',
         '& li': {
+
             position: 'relative',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'left',
             margin: '0 12px',
             '& .MuiButton-root': {
+                fontWeight: 'bold',
                 padding: '10px 7px',
                 fontSize: '18px',
                 fontFamily: 'Noto Sans CJK KR',
                 whiteSpace: 'nowrap',
-                fontWeight: 500,
+                // fontWeight: 500,
                 fontStretch: 'normal',
                 fontStyle: 'normal',
                 lineHeight: 'normal',
@@ -96,9 +91,11 @@ const useStyles = makeStyles({
                 '& > span': {
                     // color: (props) => props.isOpacity ? '#fff' : '#000000',
                     color: '#000000',
+
                     '&:hover': {
                         color: '#4063ec',
                         // color: (props) => props.isOpacity ? '#fff' : '#4063ec',
+
                     },
                 },
             },
@@ -116,32 +113,40 @@ const useStyles = makeStyles({
                         top: '0',
                         left: '50%',
                         marginLeft: '-2px',
+
                     },
                 },
             },
             '& > ul': {
                 display: 'none',
                 '& li': {
+                    textDecorationLine: 'none',
                     flexDirection: 'column',
                     textAlign: 'center',
                     fontWeight: 400,
+
                 },
             },
             '&:hover': {
                 '& .MuiButton-root': {
+                    textDecorationLine: 'none',
                     color: '#4063ec',
                     '&:after': {
+                        textDecorationLine: 'none',
                         content: '""',
                         width: '5px',
                         height: '5px',
                         display: 'block',
                         // backgroundColor: (props) => props.isOpacity ? '#fff' : '#4063ec',
+                        color: '#4063ec',
+
                         backgroundColor: '#4063ec',
                         borderRadius: '5px',
                         position: 'absolute',
                         top: '-2px',
                         left: '50%',
                         marginLeft: '-2px',
+
                         animation: `${menuBounce} 0.7s linear forwards`,
                     },
                 },
@@ -149,16 +154,19 @@ const useStyles = makeStyles({
                     display: 'flex',
                     flexDirection: 'column',
                     position: 'absolute',
-                    top: '40px',
+                    top: '20px',
                     left: '50%',
+                    width: '120px',
                     transform: 'translateX(-50%)',
                     backgroundColor: '#fff',
+                    color: '#4063ec',
                     height: 'auto',
                     justifyContent: 'center',
-                    minWidth: '160px',
+                    minWidth: '130px',
                     borderRadius: '10px',
-                    padding: '10px 20px',
+                    padding: '20px',
                     fontSize: '16px',
+
                     boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.16)',
                     animation: `${menuAni} 0.5s`,
                     '& > li': {
@@ -166,15 +174,28 @@ const useStyles = makeStyles({
                         margin: '5px',
                         flex: 'initial',
                         whiteSpace: 'nowrap',
+                        fontWeight: 'bold',
+                        fontColor: 'black',
+                        textDecoration: 'none',
+
+                    '& > a': {
+                        whiteSpace: 'nowrap',
+                        fontWeight: 'bold',
+                        textDecorationLine: 'none',
+                        color: 'black',
+
+                    },
                         '&:hover': {
+                            fontWeight: 'bold',
+                            fontColor: 'blue',
+                            textDecoration: 'none',
                             color: '#4063ec',
-                            textDecoration: 'underline',
                         },
                     },
                 },
             },
         },
-        '@media screen and (max-width: 1200px)': {
+        '@media screen and (max-width: 768px)': {
             display: 'none',
         },
     },
@@ -186,17 +207,20 @@ const useStyles = makeStyles({
         flexShrink: 0,
         marginLeft: '30px',
         lineHeight: '100%',
-        alignItems: "center"
+        alignItems: "center",
+
+        '& .loc_tit': {
+            whiteSpace: 'nowrap',
+            marginLeft: '16px',
+            fontSize: '19px',
+            verticalAlign: 'center',
+            letterSpacing: '-0.38px',
+            lineHeight: '28px',
+        },
+
     },
 
-    loc_tit: {
-        whiteSpace: 'nowrap',
-        marginLeft: '16px',
-        fontSize: '19px',
-        verticalAlign: 'center',
-        letterSpacing: '-0.38px',
-        lineHeight: '28px',
-    },
+
     dropdown: {
         position: 'relative',
         display: 'inline-block',
@@ -454,28 +478,6 @@ const MobileTopNavigationBar = ({ goToHome, goToSearch }: NavigationProps) => {
                         borderRadius: '10px',
                     }}
                 >
-
-                        {/*<Fragment>*/}
-                        {/*    <Box>*/}
-                        {/*        <Body4 weight={500}>{getUserNm()}</Body4>*/}
-                        {/*        <Body4>{'님, 안녕하세요'}</Body4>*/}
-                        {/*    </Box>*/}
-                        {/*    <Box*/}
-                        {/*        sx={{*/}
-                        {/*            fontSize: '12px',*/}
-                        {/*            color: Color.warm_gray,*/}
-                        {/*            '&:hover': {*/}
-                        {/*                textDecoration: 'underline',*/}
-                        {/*            },*/}
-                        {/*        }}*/}
-                        {/*        component={'button'}*/}
-                        {/*        onClick={()=>{navigate(`${isTspPortal? '/tsp' : '/signin'}/signout`)}}*/}
-                        {/*    >*/}
-                        {/*        {'로그아웃'}*/}
-                        {/*    </Box>*/}
-                        {/*</Fragment>*/}
-
-
                         <Fragment>
                             <NavLink style={{textDecoration: "none"}} to={``} onClick={() => {
                                 window.location.href = `/login`
@@ -515,43 +517,64 @@ const LeftDrawer = () => {
         </Drawer>
     )
 }
-
+type MenuItem = {
+    label: string;
+    path: string;
+    readYn: boolean;
+    children?: MenuItem[];
+}
 
 
 const TopNavigationBar = () => {
     const navigate = useNavigate();
 
 
-    const menuItems = [
+    const menuItems: MenuItem[] = [
         {
-            label: '메뉴1',
-            path: '/menu1',
+            label: '부동산융합아카데미',
+            path: '/about',
             readYn: true,
             children: [
                 {
-                    label: '서브메뉴1',
-                    path: '/submenu1',
+                    label: '부동산융합아카데미란',
+                    path: '/about',
                     readYn: true,
-                    children: [{ label: '하위메뉴1', path: '/subsubmenu1', readYn: true }],
+                    children: [{ label: '커리어맵', path: '/career', readYn: true }],
                 },
             ],
         },
-        // 추가 메뉴 아이템
+        {
+            label: '커뮤니티',
+            path: '/community',
+            readYn: true,
+            children: [
+                {
+                    label: '공지사항',
+                    path: '/about',
+                    readYn: true,
+                    children: [
+                        { label: '구인구직', path: '/job', readYn: true },
+                        { label: '자주묻는질', path: '/job', readYn: true },
+                        { label: '1:1문의', path: '/job', readYn: true },
+                    ],
+                },
+            ],
+        },
+        {
+            label: '강의검색',
+            path: '/lecture',
+            readYn: true
+        },
     ];
-
     let activeLabel = '';
     if (menuItems && menuItems.length > 0) {
         activeLabel = menuItems[0].label;
     }
-
-
-
     const goTo = (path: string) => navigate(path);
     const classes = useStyles();
     const [dropdownOpen1, setDropdownOpen1] = useState(false);
     const [dropdownOpen2, setDropdownOpen2] = useState(false);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
-
     useEffect(() => {
         const handleResize = () => setIsDesktop(window.innerWidth > 768);
         window.addEventListener('resize', handleResize);
@@ -584,39 +607,34 @@ const TopNavigationBar = () => {
                         </Typography>
                     </Box>
 
-                    <Box>
+                    <Box display={"flex"}>
                         {menuItems.filter(f => f.readYn).map((m, i) => {
                             const active = activeLabel == m.label;
                             return (
                                 <li key={i}>
                                     <Button type="button" className={active ? '' : ''} onClick={() => goTo(m.path)}>
-                                        <span style={{fontSize: 18}}>{m.label}</span>
+                                        <span style={{fontSize: 18, letterSpacing: -0.72}}>{m.label}</span>
                                     </Button>
-                                    <ul>
-                                        {(m.children || []).filter(f => f.readYn && f.label !== '사업신청').map((depth2, j) => (
-                                            <li key={j}>
-                                                <NavLink to={depth2.path}>
-                                                    {depth2.label}
-                                                </NavLink>
-                                                {(depth2.children || []).map((depth3, k) => (
-                                                    <NavLink key={k} to={depth3.path}>
-                                                        {depth3.label}
+                                    {m.children && (
+                                        <ul>
+                                            {(m.children || []).filter(f => f.readYn && f.label !== '사업신청').map((depth2, j) => (
+                                                <li key={j}>
+                                                    <NavLink to={depth2.path}>
+                                                        {depth2.label}
                                                     </NavLink>
-                                                ))}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                                    {(depth2.children || []).map((depth3, k) => (
+                                                        <NavLink key={k} to={depth3.path}>
+                                                            {depth3.label}
+                                                        </NavLink>
+                                                    ))}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </li>
                             );
                         })}
                     </Box>
-
-
-                    {/*<Box display="flex">*/}
-                    {/*    <Dropdown menuItems={["부동산융합아카데미란", "커리어맵"]} title="부동산융합아카데미" />*/}
-                    {/*    <Dropdown menuItems={["공지사항", "구인구직", "자주묻는질문", "1:1문의"]} title="커뮤니티" />*/}
-                    {/*    <Typography variant="h6" onClick={() => goTo("/lectures")} style={{cursor: 'pointer', marginRight: '24px'}}>강의검색</Typography>*/}
-                    {/*</Box>*/}
                     <IconButton style={{ padding: 0 }} onClick={() => window.location.href = 'http://m.naver.com/'}>
                         <Box style={{ backgroundColor: '#0080fe', width: '80px', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <SearchIcon style={{ color: '#FFFFFF', width: '40px', height: '40px' }} />
@@ -628,8 +646,6 @@ const TopNavigationBar = () => {
                 <MobileTopNavigationBar goToHome={() => goTo("/refa")} goToSearch={() => window.location.href = 'http://m.naver.com/'} />
             )}
         </Box>
-
     );
 }
-
 export default TopNavigationBar;
