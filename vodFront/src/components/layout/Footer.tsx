@@ -142,28 +142,38 @@ function Footer() {
     // 하드코딩된 routes 데이터
     const routes: RouteType[] = [
         {
-            label: "메뉴1",
+            label: "부동산융합아카데미",
             readYn: true,
+            path: "/about",
             children: [
-                { path: "/sub1", label: "서브메뉴1", readYn: true },
-                { path: "/sub2", label: "서브메뉴2", readYn: true },
+                { path: "/about", label: "부동산융합아카데미란?", readYn: true },
+                { path: "/career", label: "커리어맵", readYn: true },
             ],
         },
         {
-            label: "메뉴2",
+            label: "커뮤니티",
             readYn: true,
+            path: "/notice",
             children: [
-                { path: "/sub3", label: "서브메뉴3", readYn: true },
-                { path: "/sub4", label: "서브메뉴4", readYn: true },
+                { path: "/notice", label: "공지사항", readYn: true },
+                { path: "/job", label: "구인구직", readYn: true },
+                { path: "/faq", label: "자주묻는질문", readYn: true },
+                { path: "/qna", label: "1:1문의", readYn: true },
             ],
         },
         // 여기에 추가 메뉴 정보를 넣으세요
+        {
+            label: "강의검색",
+            readYn: true,
+            path: "/lecture",
+        },
     ];
 
     // RouteType 정의
     interface RouteType {
         label: string;
         readYn: boolean;
+        path: string;
         children?: { path: string; label: string; readYn: boolean }[];
     }
     return (
@@ -213,8 +223,13 @@ function Footer() {
                                                     {/*<Button sx={{fontWeight: 'bold', color: '#222222', fontSize: '15px', paddingLeft: 0, marginBottom:"20px"}}>*/}
                                                     {/*  {row.label}*/}
                                                     {/*</Button>*/}
-                                                    <span style={{fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                                                    <span style={{fontSize: 14, letterSpacing: -0.56}}>
+                                                         <LinkBox
+                                                             to={`${row.path}`}
+                                                             replace
+                                                         >
                                                     {row.label}
+                                                         </LinkBox>
                                                     </span>
 
                                                     <Stack sx={{ display: 'flex', gap: '10px' }}>
@@ -227,8 +242,7 @@ function Footer() {
                                                                             to={`${child.children}`}
                                                                             replace
                                                                         >
-                                                                            <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
-
+                                                                            <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56}}>
                                                                                 {child.label}
                                                                             </span>
                                                                         </LinkBox>
@@ -264,7 +278,7 @@ function Footer() {
                         />
                         {!isMobile || <SimpleMenu isDesktop={!isMobile} />}
 
-                        <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                        <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56}}>
                             주소
                         </span>
 
@@ -280,7 +294,7 @@ function Footer() {
                         </Stack>
                         <Stack direction={'row'} gap={'12px'}>
 
-                                <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                                <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56}}>
                                 장애문의 TEL. 062-123-1234
                                 </span>
 
