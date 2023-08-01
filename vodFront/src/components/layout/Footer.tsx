@@ -23,6 +23,7 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
         >
             <Stack direction={'row'} alignItems={'center'}>
                 <NavLink
+                    style={{color: "black", textDecorationLine: "none"}}
                     to={''}
                     onClick={() => {
                         const domain = process.env.REACT_APP_DOMAIN;
@@ -31,7 +32,7 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
                         )}`;
                     }}
                 >
-                    <span style={{fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                    <span style={{fontSize: 14, letterSpacing: -0.56,  fontWeight: "bold"}}>
                         {'개인정보처리방침'}
                     </span>
                 </NavLink>
@@ -44,6 +45,7 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
                     }}
                 ></Box>
                 <NavLink
+                    style={{color: "black", textDecorationLine: "none"}}
                     to={''}
                     onClick={() => {
                         const domain = process.env.REACT_APP_DOMAIN;
@@ -52,11 +54,9 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
                         )}`;
                     }}
                 >
-
-                        <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                        <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56,  fontWeight: "bold"}}>
                         {'이용약관'}
                         </span>
-
                 </NavLink>
                 <Box
                     style={{
@@ -67,12 +67,13 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
                     }}
                 ></Box>
                 <NavLink
+                    style={{color: "black", textDecorationLine: "none"}}
                     to={
                     `/SupportForUse/FrequentlyAskedQuestions`
                     }
                     replace
                 >
-                    <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                    <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, fontWeight: "bold"}}>
 
                         {'FAQ'}
 
@@ -86,16 +87,12 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
                         height: isDesktop ? '0px' : '12px',
                     }}
                 ></Box>
-
-
-                    <NavLink to={`/SupportForUse/UserManual`} replace>
-
-                            <span style={{fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>
+                    <NavLink style={{color: "#707070", textDecorationLine: "none", fontWeight: "bold"}}
+                        to={`/SupportForUse/UserManual`} replace>
+                            <span style={{fontSize: 14, letterSpacing: -0.56}}>
                             {'사용자매뉴얼'}
                             </span>
-
                     </NavLink>
-
                 <Box
                     style={{
                         borderRight: isDesktop ? '0px' : `1px solid #cccccc`,
@@ -104,10 +101,9 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
                         height: isDesktop ? '0px' : '12px',
                     }}
                 ></Box>
-
-
-                    <NavLink to={`/SupportForUse/ReferenceRoom`} replace>
-                            <span>
+                    <NavLink style={{color: "black", textDecorationLine: "none"}}
+                        to={`/SupportForUse/ReferenceRoom`} replace>
+                            <span style={{color: "#707070", fontWeight: "bold", fontSize: "14px"}} >
                             {'자료실'}
                                 </span>
                     </NavLink>
@@ -115,11 +111,6 @@ const SimpleMenu: React.FC<SimpleMenuProps> = ({ isDesktop }) => {
         </Stack>
     );
 };
-
-
-
-
-
 const agencies = [
     { page: 'http://aica-gj.kr', nm: '사업단대표홈페이지' },
     { page: 'http://ai365.or.kr', nm: 'AI기업협력센터' },
@@ -129,17 +120,10 @@ const agencies = [
 ];
 
 function Footer() {
-    // const location = useLocation();
-    // const {data: routes = []} = useSWR('route://service');
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
-    // const { isDesktop } = useGlobalConfigStore();
-    // const size = useResize()
-
     const isMobile = !isDesktop || window.innerWidth < 1280;
     const [relatedAgencies, setRelatedAgencies] = useState<any>('');
 
-
-    // 하드코딩된 routes 데이터
     const routes: RouteType[] = [
         {
             label: "부동산융합아카데미",
@@ -161,7 +145,6 @@ function Footer() {
                 { path: "/qna", label: "1:1문의", readYn: true },
             ],
         },
-        // 여기에 추가 메뉴 정보를 넣으세요
         {
             label: "강의검색",
             readYn: true,
@@ -220,11 +203,8 @@ function Footer() {
                                                         alignItems: 'left',
                                                     }}
                                                 >
-                                                    {/*<Button sx={{fontWeight: 'bold', color: '#222222', fontSize: '15px', paddingLeft: 0, marginBottom:"20px"}}>*/}
-                                                    {/*  {row.label}*/}
-                                                    {/*</Button>*/}
-                                                    <span style={{fontSize: 14, letterSpacing: -0.56}}>
-                                                         <LinkBox
+                                                    <span style={{fontSize: 14, letterSpacing: -0.56, lineHeight: 3 }}>
+                                                         <LinkBox style={{color: "black", textDecorationLine: "none", fontWeight: "bold"}}
                                                              to={`${row.path}`}
                                                              replace
                                                          >
@@ -238,7 +218,7 @@ function Footer() {
                                                             .map((child: RouteType, j: number) => {
                                                                 return (
                                                                     <Box key={'children-' + j}>
-                                                                        <LinkBox
+                                                                        <LinkBox style={{color: "black", textDecorationLine: "none", lineHeight: 1 }}
                                                                             to={`${child.children}`}
                                                                             replace
                                                                         >
@@ -254,9 +234,7 @@ function Footer() {
                                             );
                                         })}
                             </Stack>
-
-                            {/*<SimpleMenu isDesktop={!isMobile} />*/}
-                            <SimpleMenu isDesktop={true} />
+                            <SimpleMenu isDesktop={isDesktop} />
                         </Stack>
                     )}
                     {!isMobile && (
@@ -272,30 +250,28 @@ function Footer() {
                         flex={!isMobile ? '0 0 30%' : ''}
                     >
                         <img
+
                             alt={'footerLogo'}
-                            src={`/images/img/logo_footer.svg`}
+                            src={`/images/REFA_LOGO.png`}
                             style={{ width: '105px' }}
                         />
                         {!isMobile || <SimpleMenu isDesktop={!isMobile} />}
 
-                        <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56}}>
+                        <Stack direction={'row'} gap={'12px'}>
+                        <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 2, fontWeight: "bold"}}>
                             주소
                         </span>
+                        </Stack>
 
                         <Stack direction={'row'} gap={'12px'}>
-                            <Stack direction={'row'} gap={'12px'}>
-
-                                대표번호 TEL. 010-123-4567
-
-                            </Stack>
-                            {/*<span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 20}}>*/}
-                            {/*    대표번호 TEL. 062-610-3900*/}
-                            {/*</span>*/}
+                            <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 2, fontWeight: "bold"}}>
+                                업무문의 TEL. 010-123-1234
+                            </span>
                         </Stack>
                         <Stack direction={'row'} gap={'12px'}>
 
-                                <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56}}>
-                                장애문의 TEL. 062-123-1234
+                                <span style={{color: '#707070', fontSize: 14, letterSpacing: -0.56, lineHeight: 2, fontWeight: "bold"}}>
+                                장애문의 TEL. 010-123-1234
                                 </span>
 
                         </Stack>
@@ -334,9 +310,9 @@ function Footer() {
                                 renderValue={(value) => {
                                     const nm = agencies.find((f) => f.page === value)?.nm;
                                     return (
-                                        <em style={{ fontSize: '13px', color: '#707070' }}>
+                                        <span style={{ fontSize: '13px', color: '#707070' }}>
                                             {nm ? nm : '유관기관 사이트'}
-                                        </em>
+                                        </span>
                                     );
                                 }}
                                 onChange={(e) => {
@@ -400,16 +376,11 @@ function Footer() {
         </footer>
     );
 }
-
 const LinkBox = styled(NavLink)`
   :focus-visible {
     outline: 3px solid #aaa;
   }
 `;
-
-
-
-
 const RelationPageLink = (props: { isDeskTop: boolean }) => {
     const [swiper, setSwiper] = useState<any | null>(null);
     const [stopBoolean, setStopBoolean] = useState<boolean>(true);
@@ -509,21 +480,6 @@ const RelationPageLink = (props: { isDeskTop: boolean }) => {
                             </SwiperSlide>
                         );
                     })}
-                    {/*<SwiperSlide>*/}
-                    {/*  <SwiperSlideItem href="https://www.nipa.kr" target="_blank" src={`${rootPath}/images/common/othergroup_01.png`}/>*/}
-                    {/*</SwiperSlide>*/}
-                    {/*<SwiperSlide>*/}
-                    {/*  <SwiperSlideItem href="http://www.kopti.re.kr" target="_blank" src={`${rootPath}/images/common/othergroup_02.png`}/>*/}
-                    {/*</SwiperSlide>*/}
-                    {/*<SwiperSlide>*/}
-                    {/*  <SwiperSlideItem href="http://www.gjtp.or.kr" target="_blank" src={`${rootPath}/images/common/othergroup_03.png`}/>*/}
-                    {/*</SwiperSlide>*/}
-                    {/*<SwiperSlide>*/}
-                    {/*  <SwiperSlideItem href="https://www.gigca.or.kr" target="_blank" src={`${rootPath}/images/common/othergroup_04.png`}/>*/}
-                    {/*</SwiperSlide>*/}
-                    {/*<SwiperSlide>*/}
-                    {/*  <SwiperSlideItem href="https://www.gmcc.or.kr" target="_blank" src={`${rootPath}images/common/othergroup_05.png`}/>*/}
-                    {/*</SwiperSlide>*/}
                     <SwiperControllerBtns rootPath={rootPath}>
                         <Box
                             component={'button'}
@@ -678,7 +634,6 @@ function setStopBoolean(arg0: boolean) {
 const IconButtonStyle = styled(IconButton)`
   border-radius: 10px;
 `
-
 export const CustomIconButton: React.FC<{
     icon: () => React.ReactNode
     startText?: string
