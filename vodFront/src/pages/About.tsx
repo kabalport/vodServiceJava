@@ -2,13 +2,22 @@
 
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import ReactPDF, {PDFViewer} from "@react-pdf/renderer";
+import Page = ReactPDF.Page;
+import MyDocument from "./MyDocument";
 
 const AboutPage = () => {
     return (
+        <>
+
+
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" p={4}>
             <Typography variant="h2" mb={2}>
                 부동산융합아카데미란?
             </Typography>
+
+
+
             <Typography variant="body1" paragraph>
                 부동산융합아카데미는 미래 세대를 위한 진보적인 교육 플랫폼입니다.
                 우리는 부동산와 관련된 가장 효과적인 교육 방법론을 제공하며,
@@ -25,6 +34,7 @@ const AboutPage = () => {
                 우리는 학생들이 이러한 가치를 실현하도록 돕는데 전념하고 있습니다.
             </Typography>
         </Box>
+        </>
     );
 }
 

@@ -532,12 +532,12 @@ const TopNavigationBar = () => {
     const menuItems: MenuItem[] = [
         {
             label: '부동산융합아카데미',
-            path: '/about',
+            path: '/refa/about',
             readYn: true,
             children: [
                 {
                     label: '부동산융합아카데미란',
-                    path: '/about',
+                    path: '/refa/about',
                     readYn: true,
                     children: [{ label: '커리어맵', path: '/career', readYn: true }],
                 },

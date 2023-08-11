@@ -17,18 +17,22 @@ import Qaa from "./pages/QAAListPage";
 import QAAListPage from "./pages/QAAListPage";
 import QAARegisterPage from "./pages/QAARegisterPage";
 import LoginPage from "./pages/LoginPage";
-import './App.css';  // Add this line to import the CSS file
+import './App.css';
+import PdfViewer from "./pages/PdfViewer";  // Add this line to import the CSS file
 
 const App = () => {
     return (
         <LectureProvider>
             <Router>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: '100vh'
-                }}>
-                <Header />
+                {/*<div style={{*/}
+                {/*    display: 'flex',*/}
+                {/*    flexDirection: 'column',*/}
+                {/*    minHeight: '100vh'*/}
+                {/*}}>*/}
+                    <Routes>
+                        <Route path="/test" element={<PdfViewer />} />
+                    </Routes>
+                {/*<Header />*/}
                 {/*<NavBar />*/}
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
@@ -51,8 +55,8 @@ const App = () => {
                         </>
                     }/>
                 </Routes>
-                    <Footer />
-                </div>
+                    {/*<Footer />*/}
+                {/*</div>*/}
             </Router>
         </LectureProvider>
     );

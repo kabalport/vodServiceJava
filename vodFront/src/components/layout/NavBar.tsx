@@ -50,7 +50,7 @@ const NavBar = () => {
 
     const goToHome = () => navigate("/");
 
-    const goToAbout = () => navigate("/about");
+    const goToAbout = () => navigate("/refa/about");
     const goToCareer = () => navigate("/career");
     const goToNotice = () => navigate("/notice");
     const goToJob = () => navigate("/job");
