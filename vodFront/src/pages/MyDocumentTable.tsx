@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        borderCollapse: 'collapse',
-
+        borderCollapse: 'collapse'
     },
     row: {
         flexDirection: 'row',
@@ -35,18 +34,17 @@ const styles = StyleSheet.create({
         flexBasis: '16.67%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'grey',
+        backgroundColor: "white",
         border: '1px solid black',
         padding: 5,
     },
     blackText: {
         color: '#000',
-        fontSize: 15,
-
+        fontSize: 12,
     },
     doubleHeight: {
         height: '200%', // to simulate rowspan=2
-        backgroundColor: 'grey',
+        backgroundColor: "white",
         border: '1px solid black',
     },
     doubleWidth: {
@@ -56,11 +54,16 @@ const styles = StyleSheet.create({
     tripleWidth: {
         flexBasis: '50%', // to simulate colspan=3
         border: '1px solid black',
-        backgroundColor: 'grey',
-    }
+        backgroundColor: "white",
+    },
+    content: {
+        fontSize: 12,
+        marginBottom: 10,
+    },
 });
 
 const MyDocumentTable = () => (
+
     <View style={styles.table}>
         <View style={styles.row}>
             <View style={[styles.cell, styles.doubleHeight]}>

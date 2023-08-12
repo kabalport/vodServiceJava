@@ -24,15 +24,15 @@ const App = () => {
     return (
         <LectureProvider>
             <Router>
-                {/*<div style={{*/}
-                {/*    display: 'flex',*/}
-                {/*    flexDirection: 'column',*/}
-                {/*    minHeight: '100vh'*/}
-                {/*}}>*/}
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    minHeight: '100vh'
+                }}>
                     <Routes>
                         <Route path="/test" element={<PdfViewer />} />
                     </Routes>
-                {/*<Header />*/}
+                <Header />
                 {/*<NavBar />*/}
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
@@ -55,8 +55,8 @@ const App = () => {
                         </>
                     }/>
                 </Routes>
-                    {/*<Footer />*/}
-                {/*</div>*/}
+                    <Footer />
+                </div>
             </Router>
         </LectureProvider>
     );

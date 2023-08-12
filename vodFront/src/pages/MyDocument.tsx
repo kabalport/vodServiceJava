@@ -1,28 +1,45 @@
 import React from 'react';
 import { Document, Text, Page, StyleSheet, View, Font, Image } from '@react-pdf/renderer'; // Image 추가
 import notoSansKR from '../assets/fonts/NotoSansKR-Regular.otf';
+import notoSansKR2 from '../assets/fonts/NotoSansKR-Bold.otf';
 import MyDocumentTable from "./MyDocumentTable";
+import stamp from "../assets/stamp_origin.png"
+import MyDocumentTable2 from "./MyDocumentTable2";
 
 // 한글 폰트 등록
 Font.register({
     family: 'Noto Sans KR',
-    src: notoSansKR,
+    src: notoSansKR
 });
+Font.register({
+    family: 'Noto Sans KR Bold',
+    src: notoSansKR2,
+});
+
 
 const styles = StyleSheet.create({
     page: {
         marginTop: 30,
         fontSize: 30,
-        padding: 20,
+        padding: 40,
         fontFamily: 'Noto Sans KR',
+    },
+    borderedSection: {
+        borderColor: 'black',
+        borderWidth: 1,
+        padding: 10, // 내부 요소와 테두리 사이의 간격
+        marginBottom: 10, // 테두리 박스 아래쪽의 간격
+    },
+    boldHeader: {
+        fontFamily: 'Noto Sans KR Bold',
     },
     header: {
         marginBottom: 10,
         textAlign: 'center',
-        fontSize: 36,
+        fontSize: 30,
     },
     content: {
-        fontSize: 16,
+        fontSize: 12,
         marginBottom: 10,
     },
     layout: {
@@ -36,7 +53,7 @@ const styles = StyleSheet.create({
         textAlign: 'right', // 오른쪽 정렬 추가
     },
     agreementItem: {
-        fontSize: 16,
+        fontSize: 12,
         marginBottom: 5
     },
     subText: {
@@ -46,20 +63,31 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     signatureImage: {
-        width: 30,
-        height: 30,
+        width: 70,
+        height: 70,
         position: 'absolute',
         right: 0,
-        top: 30, // 당신의 필요에 따라 조정해야 할 수 있습니다
+        top: -10,
     },
+    tableText: {
+        marginTop: 10,
+        fontSize: 10,
+        textAlign: "right",
+        // marginBottom: 5
+    },
+    marginAdd:{
+        marginTop: 20
+    }
 
 });
 
 const MyDocument = () => (
     <Document>
         <Page style={styles.page}>
-            <Text style={styles.header}>협 약 서</Text>
+            <Text style={[styles.header, styles.boldHeader]}>협 약 서</Text>
             <Text style={styles.content}>인공지능산업융합사업단(이하 사업단)과 [기업명](이하 수행기업)은(는) [사업명] 과제를 추진하기 위하여 다음과 같이 협약을 체결한다.</Text>
+
+            <View style={styles.borderedSection}>
 
             <Text style={styles.agreementItem}>□ 협약과제명 : [사업명]</Text>
             <Text style={styles.agreementItem}>□ 협약당사자</Text>
@@ -68,19 +96,25 @@ const MyDocument = () => (
             <Text style={styles.agreementItem}>□ 협약기간 : [협약기간]</Text>
             <Text style={styles.agreementItem}>□ 협약금액 : [협약금액]</Text>
 
+            <Text style={styles.tableText}>단위 : 원</Text>
             <MyDocumentTable />
+                <View style={styles.marginAdd}></View>
+                <Text style={styles.agreementItem}>□ 참여기업</Text>
+                <MyDocumentTable2 />
+            </View>
             <Text style={styles.subText}>[협약일]2000년 0월 0일</Text>
 
             <View style={styles.layout}>
                 <View style={{flex: 1}}>
-                    <Image source="https://images.unsplash.com/photo-1528301721190-186c3bd85418?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80" style={styles.signatureImage} /> // 여기에 이미지 추가
-                    <Text style={styles.underText}>사업단 : 인공지능산업융합사업단</Text>
-                    <Text style={styles.underText}>단장 김 준 하</Text>
+                    <Image source={stamp} style={styles.signatureImage} /> // 여기에 이미지 추가
+                    <Text style={[styles.underText, styles.boldHeader]}>사업단 : 인공지능산업융합사업단</Text>
+                    <Text style={[styles.underText, styles.boldHeader]}>단장 김 준 하</Text>
 
                 </View>
                 <View style={{flex: 1}}>
-                    <Text style={styles.underText}>수행기관 : [수행기업명]</Text>
-                    <Text style={styles.underText}>[직위] [대표자]</Text>
+                    <Image source={stamp} style={styles.signatureImage} /> // 여기에 이미지 추가
+                    <Text style={[styles.underText, styles.boldHeader]}>수행기관 : [수행기업명]</Text>
+                    <Text style={[styles.underText, styles.boldHeader]}>[직위] [대표자]</Text>
                 </View>
             </View>
 
