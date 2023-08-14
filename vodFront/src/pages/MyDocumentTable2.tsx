@@ -21,22 +21,35 @@ const styles = StyleSheet.create({
     },
     table: {
         width: "100%",
-        borderStyle: "solid",
+        // borderStyle: "solid",
         borderColor: "#bfbfbf",
-        borderWidth: 1,
+        // borderWidth: 1,
     },
     tableRow: {
         flexDirection: "row",
-        borderStyle: "solid",
+        // borderStyle: "solid",
         borderColor: "#bfbfbf",
-        borderBottomWidth: 1
+        // borderBottomWidth: 1
     },
 
     tableColHeader: {
         width: "33.33%", // 열의 폭을 1/3로 수정
         borderRightWidth: 1,
+        borderTopWidth: 1,
+        // borderStyle: "solid",
+        // borderColor: "#bfbfbf",
+        borderColor: "black",
+        // backgroundColor: "grey",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    tableColTopHeader: {
+        width: "33.33%", // 열의 폭을 1/3로 수정
+        borderRightWidth: 1,
+        borderTopWidth: 1,
+        borderLeftWidth: 1,
         borderStyle: "solid",
-        borderColor: "#bfbfbf",
+        borderColor: "black",
         // backgroundColor: "grey",
         justifyContent: "center",
         alignItems: "center"
@@ -44,27 +57,25 @@ const styles = StyleSheet.create({
     tableCol: {
         width: "33.33%", // 열의 폭을 1/3로 수정
         borderRightWidth: 1,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
         borderStyle: "solid",
-        borderColor: "#bfbfbf",
+        borderColor: "black",
         justifyContent: "center",
         alignItems: "center"
     },
-    // tableColHeader: {
-    //     width: "25%",
-    //     borderRightWidth: 1,
-    //     borderStyle: "solid",
-    //     borderColor: "#bfbfbf",
-    //     justifyContent: "center",
-    //     alignItems: "center"
-    // },
-    // tableCol: {
-    //     width: "25%",
-    //     borderRightWidth: 1,
-    //     borderStyle: "solid",
-    //     borderColor: "#bfbfbf",
-    //     justifyContent: "center",
-    //     alignItems: "center"
-    // },
+    tableTopCol: {
+        width: "33.33%", // 열의 폭을 1/3로 수정
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderStyle: "solid",
+        borderColor: "black",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+
     tableCellHeader: {
         margin: "auto",
         fontSize: 12,
@@ -79,7 +90,7 @@ const styles = StyleSheet.create({
 const MyDocumentTable = () => (
     <View style={styles.table}>
         <View style={styles.tableRow}>
-            <View style={styles.tableColHeader}>
+            <View style={styles.tableColTopHeader}>
                 <Text style={styles.tableCellHeader}>기업명</Text>
             </View>
             <View style={styles.tableColHeader}>
@@ -90,14 +101,14 @@ const MyDocumentTable = () => (
             </View>
         </View>
         <View style={styles.tableRow}>
-            <View style={styles.tableCol}>
-                <Text style={styles.tableCell}>&nbsp;</Text>
+            <View style={styles.tableTopCol}>
+                <Text style={styles.tableCell}>aa&nbsp;s</Text>
             </View>
             <View style={styles.tableCol}>
                 <Text style={styles.tableCell}>ss</Text> {/* 데이터 삽입 */}
             </View>
             <View style={styles.tableCol}>
-                <Text style={styles.tableCell}></Text> {/* 데이터 삽입 */}
+                <Text style={styles.tableCell}>dd</Text> {/* 데이터 삽입 */}
             </View>
         </View>
     </View>

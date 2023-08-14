@@ -6,10 +6,27 @@ import ReactPDF, {PDFViewer} from "@react-pdf/renderer";
 import Page = ReactPDF.Page;
 import MyDocument from "./MyDocument";
 
+
+import { pdf } from '@react-pdf/renderer';
+
+import { saveAs } from 'file-saver';
+
+const DownloadButton = () => {
+    const downloadPdf = async () => {
+        const blob = await pdf(<MyDocument />).toBlob();
+        saveAs(blob, '협약서 다운로드.pdf');
+    };
+
+    return <button onClick={downloadPdf}>Download PDF</button>;
+};
+
+
+
+
 const AboutPage = () => {
     return (
         <>
-
+        <DownloadButton></DownloadButton>
 
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" p={4}>
             <Typography variant="h2" mb={2}>

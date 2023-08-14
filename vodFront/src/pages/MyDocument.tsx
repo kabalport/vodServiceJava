@@ -4,6 +4,7 @@ import notoSansKR from '../assets/fonts/NotoSansKR-Regular.otf';
 import notoSansKR2 from '../assets/fonts/NotoSansKR-Bold.otf';
 import MyDocumentTable from "./MyDocumentTable";
 import stamp from "../assets/stamp_origin.png"
+import compstamp from "../assets/compstamp.png"
 import MyDocumentTable2 from "./MyDocumentTable2";
 
 // 한글 폰트 등록
@@ -69,6 +70,13 @@ const styles = StyleSheet.create({
         right: 0,
         top: -10,
     },
+    signatureImage2: {
+        width: 30,
+        height: 30,
+        position: 'absolute',
+        right: 110,
+        top: 30,
+    },
     tableText: {
         marginTop: 10,
         fontSize: 10,
@@ -77,7 +85,48 @@ const styles = StyleSheet.create({
     },
     marginAdd:{
         marginTop: 20
+    },
+
+    table: {
+        flexDirection: 'column',
+        borderLeftWidth: 1,
+        borderStyle: 'dotted',
+        borderRightWidth: 0,
+        borderBottomWidth: 0,
+        marginTop: 50,
+        // padding:
+    },
+    row: {
+        flexDirection: 'row',
+    },
+    labelCell: {  // "붙임1" 컬럼을 대표하는 셀 스타일
+        flex: 0.3,  // 너비를 작게 설정 (값은 원하는대로 조정)
+        borderStyle: 'dotted',
+        borderWidth: 1,
+        borderLeftWidth: 0,
+        marginTop: -1,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingLeft: 2,
+        paddingRight: 2,
+        fontSize: '10px',
+        textAlign: "center",
+    },
+    cell: {
+        flex: 1,
+        borderStyle: 'dotted',
+        borderWidth: 1,
+        borderLeftWidth: 0,
+        marginTop: -1,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingLeft: 2,
+        paddingRight: 2,
+        fontSize: '10px',
+        textAlign: "center",
     }
+
+
 
 });
 
@@ -112,9 +161,25 @@ const MyDocument = () => (
 
                 </View>
                 <View style={{flex: 1}}>
-                    <Image source={stamp} style={styles.signatureImage} /> // 여기에 이미지 추가
+                    <Image source={compstamp} style={styles.signatureImage2} /> // 여기에 이미지 추가
                     <Text style={[styles.underText, styles.boldHeader]}>수행기관 : [수행기업명]</Text>
                     <Text style={[styles.underText, styles.boldHeader]}>[직위] [대표자]</Text>
+                </View>
+            </View>
+
+        {/*    첨부 표*/}
+            <View style={styles.table}>
+                <View style={styles.row}>
+                    <View style={styles.labelCell}><Text>붙임1</Text></View>
+                    <View style={styles.cell}><Text></Text></View>
+                </View>
+                <View style={styles.row}>
+                    <View style={styles.labelCell}><Text>붙임2</Text></View>
+                    <View style={styles.cell}><Text></Text></View>
+                </View>
+                <View style={styles.row}>
+                    <View style={styles.labelCell}><Text>붙임3</Text></View>
+                    <View style={styles.cell}><Text></Text></View>
                 </View>
             </View>
 
